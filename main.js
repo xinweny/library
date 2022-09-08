@@ -19,7 +19,6 @@
     new Book("How to Teach Quantum Physics to your Dog", 'Chad Orzel', 2010, 256, true),
     new Book("Raccoons Are The Brightest People", 'Sterling North', 1966, 192, false));
 
-
   function addBookToLibrary(book) {
     library.push(book);
   }
@@ -32,6 +31,7 @@
         let readButton = document.createElement('button');
         if (book.isRead) readButton.classList.add('read');
         readButton.textContent = book.isRead ? 'Read' : 'Unread';
+        readButton.addEventListener('click', updateReadStatus);
         card.appendChild(readButton);
       } else {
         let element = document.createElement('p');
@@ -62,10 +62,25 @@
   }
 
   function removeBookFromLibrary(event) {
-    const bookCard = event.target.parentElement;
-    const index = Number(bookCard.getAttribute('data-index'));
+    const [bookCard, index] = getBookCardReference(event.target);
     library.splice(index, 1);
     elements.libraryContainer.removeChild(bookCard);
+  }
+
+  function updateReadStatus(event) {
+    const [bookCard, index] = getBookCardReference(event.target);
+    const book = library[index];
+    book.isRead = !book.isRead;
+
+    event.target.textContent = book.isRead ? 'Read' : 'Unread';
+    event.target.classList.toggle('read');
+  }
+
+  function getBookCardReference(button) {
+    const bookCard = button.parentElement;
+    const index = Number(bookCard.getAttribute('data-index'));
+
+    return [bookCard, index];
   }
 
   displayBooks();
