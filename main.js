@@ -26,7 +26,7 @@
 
   function createBookCard(book) {
     const card = document.createElement('div');
-    card.classList.add('card');
+    card.classList.add('book-card');
 
     for (const property in book) {
       if (property == 'isRead') {
@@ -39,6 +39,10 @@
         element.textContent = book[property];
         card.appendChild(element);
       }
+
+      let deleteBookButton = document.createElement('button');
+      deleteBookButton.textContent = 'x';
+      card.appendChild(deleteBookButton);
     }
 
     return card;
@@ -48,10 +52,6 @@
     for (let book of library) {
       let card = createBookCard(book);
       elements.libraryContainer.appendChild(card);
-
-      let deleteBookButton = document.createElement('button');
-      deleteBookButton.textContent = 'x';
-      card.appendChild(deleteBookButton);
     }
   }
 
