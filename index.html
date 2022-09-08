@@ -14,6 +14,21 @@
   <div class="content">
     <button type="button" id="add-book-btn">+ Add book</button>
     <div class="card-container"></div>
+    <form action="post">
+      <h2>Add a new book</h2>
+      <section>
+        <input type="text" id="title" name="title" required>
+        <label for="title">Title</label>
+        <input type="text" id="author" name="title" required>
+        <label for="author">Author</label>
+      </section>
+      <section>
+        <input type="number" id="year" name="year" step="1">
+        <label for="year">Year</label>
+        <input type="number" id="pages" name="pages" min="0" step="1">
+        <label for="pages">Pages</label>
+      </section>
+    </form>
   </div>
   <div class="footer">
     <p>Made by <a href="https://github.com/xinweny">xinweny</a> in 2022</p>
