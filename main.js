@@ -34,15 +34,25 @@ function createBookCard(book) {
   let element = null;
 
   for (const property in book) {
-    if (property == 'isRead') {
-      element = document.createElement('button');
-      if (book.isRead) element.classList.add('read');
-      element.textContent = book.isRead ? 'Read' : 'Unread';
-      element.addEventListener('click', updateReadStatus); 
-    } else {
-      element = document.createElement('p');
-      element.textContent = book[property];
+    element = document.createElement('p');
+    switch(property) {
+      case 'isRead':
+        element = document.createElement('button');
+        if (book.isRead) element.classList.add('read');
+        element.textContent = book.isRead ? 'Read' : 'Unread';
+        element.addEventListener('click', updateReadStatus);
+        break;
+      case 'author':
+        element.textContent = `By ${book[property]}`; break;
+      case 'year':
+        element.textContent = `Published: ${book[property]}`; break;
+      case 'pages':
+        element.textContent = (book[property] === 1) ? `${book[property]} page` : `${book[property]} pages`;
+        break;
+      default:
+        element.textContent = book[property]; break;
     }
+
     card.appendChild(element);
   }
 
@@ -103,7 +113,7 @@ function addBookToLibrary(event) {
     const card = createBookCard(book);
     card.setAttribute('data-index', library.indexOf(book));
     elements.libraryContainer.appendChild(card);
-    
+
     elements.bookForm.setAttribute('hidden', 'true');
     elements.bookForm.reset();
   } 
