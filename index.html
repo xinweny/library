@@ -13,9 +13,7 @@
   </div>
   <div class="content">
     <button type="button" id="add-book-btn">+ Add book</button>
-    <div class="card-container"></div>
-    <form action="post">
-      <h2>Add a new book</h2>
+    <form action="post" hidden>
       <section>
         <input type="text" id="title" name="title" placeholder="Ducks: And How To Make Them Pay" required>
         <label for="title">Title</label>
@@ -28,7 +26,9 @@
         <input type="number" id="pages" name="pages" min="0" step="1" placeholder="188">
         <label for="pages">Pages</label>
       </section>
+      <button type="submit">Add book</button>
     </form>
+    <div class="card-container"></div>
   </div>
   <div class="footer">
     <p>Made by <a href="https://github.com/xinweny">xinweny</a> in 2022</p>

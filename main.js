@@ -2,7 +2,8 @@
   let library = [];
   const elements = {
     libraryContainer: document.querySelector('.card-container'),
-    addBookButton: document.getElementById('add-book-btn')
+    addBookButton: document.getElementById('add-book-btn'),
+    bookForm: document.querySelector('form')
   };
 
   function Book(title, author, year, pages, isRead=false) {
@@ -47,11 +48,15 @@
     for (let book of library) {
       let card = createBookCard(book);
       elements.libraryContainer.appendChild(card);
+
+      let deleteBookButton = document.createElement('button');
+      deleteBookButton.textContent = 'x';
+      card.appendChild(deleteBookButton);
     }
   }
 
-  function displayBookForm() {
-
+  function displayBookForm(event) {
+    elements.bookForm.removeAttribute('hidden');
   }
 
   displayBooks();
