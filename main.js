@@ -1,5 +1,9 @@
 (function() {
   let library = [];
+  const elements = {
+    libraryContainer: document.querySelector('.card-container'),
+    addBookButton: document.getElementById('add-book-btn')
+  };
 
   function Book(title, author, year, pages, isRead=false) {
     this.title = title;
@@ -40,11 +44,9 @@
   }
 
   function displayBooks() {
-    const libraryContainer = document.querySelector('.card-container');
-
     for (let book of library) {
       let card = createBookCard(book);
-      libraryContainer.appendChild(card);
+      elements.libraryContainer.appendChild(card);
     }
   }
 
@@ -53,5 +55,5 @@
   }
 
   displayBooks();
-  document.getElementById('add-book-btn').addEventListener('click', displayBookForm);
+  elements.addBookButton.addEventListener('click', displayBookForm);
  })();
