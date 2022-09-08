@@ -2,3 +2,29 @@
   margin: 0;
   padding: 0;
 }
+
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
+.header {
+  padding: 24px;
+}
+
+.content {
+  height: 100%;
+  padding: 24px;
+}
+
+.card-container {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 48px;
+}
+
+.book-card {
+  width: 200px;
+  height: 200px;
+}
