@@ -23,16 +23,18 @@
     const card = document.createElement('div');
     card.classList.add('card');
 
-    card.appendChild(document.createElement('h2')
-      .appendChild(document.createTextNode(book.title)));
-    card.appendChild(document.createElement('p')
-      .appendChild(document.createTextNode(book.author)));
-    card.appendChild(document.createElement('p')
-      .appendChild(document.createTextNode(book.year)));
-    card.appendChild(document.createElement('p')
-      .appendChild(document.createTextNode(book.pages)));
-      card.appendChild(document.createElement('button')
-      .appendChild(document.createTextNode(book.isRead)));
+    for (const property in book) {
+      if (property == 'isRead') {
+        let readButton = document.createElement('button');
+        if (book.isRead) readButton.classList.add('read');
+        readButton.textContent = book.isRead ? 'Read' : 'Unread';
+        card.appendChild(readButton);
+      } else {
+        let element = document.createElement('p');
+        element.textContent = book[property];
+        card.appendChild(element);
+      }
+    }
 
     return card;
   }
@@ -47,7 +49,7 @@
   }
 
   function displayBookForm() {
-    
+
   }
 
   displayBooks();
