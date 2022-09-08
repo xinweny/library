@@ -40,10 +40,11 @@
         card.appendChild(element);
       }
 
-      let deleteBookButton = document.createElement('button');
-      deleteBookButton.textContent = 'x';
-      card.appendChild(deleteBookButton);
     }
+
+    let deleteBookButton = document.createElement('button');
+    deleteBookButton.textContent = 'x';
+    card.appendChild(deleteBookButton);
 
     return card;
   }
