@@ -15,7 +15,7 @@
   }
 
   library.push(
-    new Book("Ducks: And how to Make Them Pay", 'William Cook', 1894, 188, true),
+    new Book("Ducks: And How To Make Them Pay", 'William Cook', 1894, 188, true),
     new Book("How to Teach Quantum Physics to your Dog", 'Chad Orzel', 2010, 256, true),
     new Book("Raccoons Are The Brightest People", 'Sterling North', 1966, 192, false));
 
@@ -26,7 +26,6 @@
 
   function createBookCard(book) {
     const card = document.createElement('div');
-    card.classList.add('book-card');
 
     for (const property in book) {
       if (property == 'isRead') {
@@ -44,6 +43,7 @@
 
     let deleteBookButton = document.createElement('button');
     deleteBookButton.textContent = 'x';
+    deleteBookButton.addEventListener('click', removeBookFromLibrary);
     card.appendChild(deleteBookButton);
 
     return card;
@@ -52,12 +52,20 @@
   function displayBooks() {
     for (let book of library) {
       let card = createBookCard(book);
+      card.setAttribute('data-index', library.indexOf(book));
       elements.libraryContainer.appendChild(card);
     }
   }
 
   function displayBookForm(event) {
     elements.bookForm.removeAttribute('hidden');
+  }
+
+  function removeBookFromLibrary(event) {
+    const bookCard = event.target.parentElement;
+    const index = Number(bookCard.getAttribute('data-index'));
+    library.splice(index, 1);
+    elements.libraryContainer.removeChild(bookCard);
   }
 
   displayBooks();
