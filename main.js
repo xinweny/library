@@ -38,7 +38,7 @@
   }
 
   function displayBooks() {
-    const libraryContainer = document.querySelector('.content');
+    const libraryContainer = document.querySelector('.card-container');
 
     for (let book of library) {
       let card = createBookCard(book);
@@ -46,5 +46,10 @@
     }
   }
 
+  function displayBookForm() {
+    
+  }
+
   displayBooks();
+  document.getElementById('add-book-btn').addEventListener('click', displayBookForm);
  })();
