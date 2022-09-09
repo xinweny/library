@@ -36,6 +36,7 @@
     card.classList.add('book-card');
     let element = null;
 
+    propertyLoop:
     for (const property in book) {
       element = document.createElement('p');
       switch(property) {
@@ -46,9 +47,9 @@
           element.addEventListener('click', updateReadStatus);
           break;
         case 'author':
-          element.textContent = `By ${book[property]}`; break;
+          element.textContent = `by ${book[property]}${(book['year']) ? ', ' + book['year'] : ''}`; break;
         case 'year':
-          element.textContent = `Published: ${book[property]}`; break;
+          continue propertyLoop;
         case 'pages':
           element.textContent = (book[property] === 1) ? `${book[property]} page` : `${book[property]} pages`;
           break;
