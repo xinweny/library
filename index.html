@@ -8,11 +8,22 @@
   <script src="./main.js" defer></script>
 </head>
 <body>
-  <div class="header">
-    <h1>Library</h1>
+  <div class="bottom-layer">
+    <div class="header">
+      <h1>Library</h1>
+    </div>
+    <div class="content">
+      <button type="button" id="add-book-btn">+ Add book</button>
+      <div class="card-container"></div>
+    </div>
+    <div class="footer">
+      <p>Made by <a href="https://github.com/xinweny">xinweny</a> in 2022</p>
+      <a href="https://github.com/xinweny/library">
+          <img id="github-logo" src="./assets/github.png" alt="GitHub logo">
+      </a>
+    </div>
   </div>
-  <div class="content">
-    <button type="button" id="add-book-btn">+ Add book</button>
+  <div class="upper-layer">
     <form name="bookForm" onsubmit="return false;" hidden>
       <div>
         <label for="title">Title</label>
@@ -36,13 +47,6 @@
       </div>
       <button id="submit-btn" type="submit">Add book</button>
     </form>
-    <div class="card-container"></div>
-  </div>
-  <div class="footer">
-    <p>Made by <a href="https://github.com/xinweny">xinweny</a> in 2022</p>
-    <a href="https://github.com/xinweny/library">
-        <img id="github-logo" src="./assets/github.png" alt="GitHub logo">
-    </a>
   </div>
 </body>
 </html>

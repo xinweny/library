@@ -92,7 +92,9 @@
   // Event listener callbacks
   function displayBookForm(event) {
     updateRequiredAttr(ui.bookForm);
+
     ui.bookForm.style.display = 'block';
+    document.querySelector('.bottom-layer').style.filter = 'brightness(50%)';
   }
 
   function removeBookFromLibrary(event) {
