@@ -1,4 +1,4 @@
-# library
+# Library
 Library app made in vanilla JS, CSS and HTML. 📚
 
 Live demo [here](https://xinweny.github.io/library)! 
