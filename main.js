@@ -4,7 +4,8 @@
     libraryContainer: document.querySelector('.card-container'),
     addBookButton: document.getElementById('add-book-btn'),
     bookForm: document.forms['bookForm'],
-    submitButton: document.querySelector('button#submit-btn')
+    submitButton: document.querySelector('button#submit-btn'),
+    closeFormButton: document.getElementById('close-form-btn')
   };
 
   function Book(title, author, year, pages, isRead=false) {
@@ -89,12 +90,23 @@
     }
   }
 
+  function hideForm(form) {
+    form.reset();
+    updateRequiredAttr(form);
+    form.style.display = 'none';
+  }
+
   // Event listener callbacks
   function displayBookForm(event) {
     updateRequiredAttr(ui.bookForm);
 
-    ui.bookForm.style.display = 'block';
+    ui.bookForm.style.display = 'grid';
     document.querySelector('.bottom-layer').style.filter = 'brightness(50%)';
+  }
+
+  function hideBookForm(event) {
+    hideForm(ui.bookForm);
+    document.querySelector('.bottom-layer').style.filter = 'brightness(100%)';
   }
 
   function removeBookFromLibrary(event) {
@@ -105,7 +117,6 @@
     // Update data-index
     const remainingCards = Array.from(ui.libraryContainer.querySelectorAll('.book-card'));
     for (let i = 0; i < remainingCards.length; i++) {
-      console.log(remainingCards[i]);
       remainingCards[i].setAttribute('data-index', i)
     }
   }
@@ -134,9 +145,7 @@
       card.setAttribute('data-index', library.indexOf(book));
       ui.libraryContainer.appendChild(card);
 
-      ui.bookForm.reset();
-      updateRequiredAttr(ui.bookForm);
-      ui.bookForm.style.display = 'none';
+      hideForm(ui.bookForm);
     } 
   }
 
@@ -145,5 +154,6 @@
   // Event listeners
   ui.addBookButton.addEventListener('click', displayBookForm);
   ui.submitButton.addEventListener('click', addBookToLibrary);
+  ui.closeFormButton.addEventListener('click', hideBookForm);
 
 })();
