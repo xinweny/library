@@ -14,16 +14,26 @@
   <div class="content">
     <button type="button" id="add-book-btn">+ Add book</button>
     <form name="bookForm" onsubmit="return false;" hidden>
-      <input type="text" id="title" name="title" placeholder="Ducks: And How To Make Them Pay" required>
-      <label for="title">Title</label>
-      <input type="text" id="author" name="author" placeholder="William Cook" required>
-      <label for="author">Author</label>
-      <input type="number" id="year" name="year" step="1" placeholder="1894" required>
-      <label for="year">Year</label>
-      <input type="number" id="pages" name="pages" min="0" step="1" placeholder="188" required>
-      <label for="pages">Pages</label>
-      <input type="checkbox" name="read" id="read">
-      <label for="read">Read?</label>
+      <div>
+        <label for="title">Title</label>
+        <input type="text" id="title" name="title" placeholder="Goblinproofing One's Chicken Coop" required>
+      </div>
+      <div>
+        <label for="author">Author</label>
+        <input type="text" id="author" name="author" placeholder="Reginald Bakeley" required>
+      </div>
+      <div>
+        <label for="year">Year</label>
+        <input type="number" id="year" name="year" step="1" placeholder="2012" required>
+      </div>
+      <div>
+        <label for="pages">Pages</label>
+        <input type="number" id="pages" name="pages" min="1" step="1" placeholder="208" required>
+      </div>
+      <div>
+        <label for="read">Read?</label>
+        <input type="checkbox" name="read" id="read">
+      </div>
       <button id="submit-btn" type="submit">Add book</button>
     </form>
     <div class="card-container"></div>

@@ -92,7 +92,7 @@
   // Event listener callbacks
   function displayBookForm(event) {
     updateRequiredAttr(ui.bookForm);
-    ui.bookForm.removeAttribute('hidden');
+    ui.bookForm.style.display = 'block';
   }
 
   function removeBookFromLibrary(event) {
@@ -134,7 +134,7 @@
 
       ui.bookForm.reset();
       updateRequiredAttr(ui.bookForm);
-      ui.bookForm.setAttribute('hidden', 'true');
+      ui.bookForm.style.display = 'none';
     } 
   }
 
