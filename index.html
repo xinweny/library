@@ -31,16 +31,16 @@
         <label for="author">Author</label>
         <input type="text" id="author" name="author" placeholder="Reginald Bakeley" required>
         <label for="year">Year</label>
-        <input type="number" id="year" name="year" step="1" placeholder="2012" required>
+        <input type="number" id="year" name="year" max="3000" step="1" placeholder="2012" required>
         <label for="pages">Pages</label>
         <input type="number" id="pages" name="pages" min="1" step="1" placeholder="208" required>
         <div class="checkbox">
           <label for="read">Read?</label>
           <input type="checkbox" name="read" id="read">
         </div>
-        <button id="submit-btn" type="submit">Add book</button>
       </div>
       <button id="close-form-btn" type="button">x</button>
+      <button id="submit-btn" type="submit">Add book</button>
     </form>
   </div>
 </body>

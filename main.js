@@ -94,6 +94,7 @@
     form.reset();
     updateRequiredAttr(form);
     form.style.display = 'none';
+    document.querySelector('.bottom-layer').style.filter = 'brightness(100%)';
   }
 
   // Event listener callbacks
@@ -106,7 +107,6 @@
 
   function hideBookForm(event) {
     hideForm(ui.bookForm);
-    document.querySelector('.bottom-layer').style.filter = 'brightness(100%)';
   }
 
   function removeBookFromLibrary(event) {

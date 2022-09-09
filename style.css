@@ -32,6 +32,12 @@ body {
   margin-bottom: 24px;
 }
 
+#add-book-btn:active {
+  border-color: black;
+  background-color: white;
+  color: black;
+}
+
 .card-container {
   display: flex;
   align-items: flex-start;
@@ -45,6 +51,7 @@ body {
   padding: 16px;
   border: 4px double white;
   background: rgba(0, 0, 0, 0.5);
+  position: relative;
 }
 
 .book-card button:first-of-type {
@@ -61,10 +68,13 @@ body {
   background-color: transparent;
   font-size: 1.5rem;
   border: none;
+  position: absolute;
+  right: 8px;
+  top: 0px;
 }
 
 .book-card button:last-child:active {
-  color: red;
+  color: black;
 }
 
 .footer {
@@ -86,7 +96,9 @@ form {
   padding: 24px;
   border-radius: 24px;
   grid-template-columns: 1fr auto;
+  grid-template-rows: auto 1fr;
   align-items: start;
+
 }
 
 .main-form-content {
@@ -102,8 +114,18 @@ form label, form input, form button {
 .checkbox {
   display: flex;
   gap: 8px;
+  justify-content: start;
+  align-items: center;
+  margin-bottom: 16px;
 }
 
+input:not(#read) {
+  width: calc(100% - 36px);
+  padding: 8px;
+  border: 1px solid black;
+  border-radius: 16px;
+  margin-bottom: 16px;
+}
 
 #close-form-btn {
   display: block;
@@ -111,4 +133,21 @@ form label, form input, form button {
   background-color: transparent;
   font-size: 1.5rem;
   border: none;
+}
+
+#submit-btn {
+  align-self: center;
+  justify-self: center;
+  grid-column: 1 / -1;
+  padding: 12px 32px;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: transparent;
+  border: 2px solid black;
+  border-radius: 32px;
+}
+
+#submit-btn:active {
+  background-color: black;
+  color: white;
 }
