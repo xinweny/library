@@ -51,7 +51,9 @@
         case 'year':
           continue propertyLoop;
         case 'pages':
-          element.textContent = (book[property] === 1) ? `${book[property]} page` : `${book[property]} pages`;
+          if (book['property']) {
+            element.textContent = (book[property] === 1) ? `${book[property]} page` : `${book[property]} pages`;
+          }          
           break;
         default:
           element.textContent = book[property]; break;
