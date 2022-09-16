@@ -1,6 +1,7 @@
 (function () {
   let library = [];
-  const ui = {
+
+  const UI = {
     libraryContainer: document.querySelector('.card-container'),
     addBookButton: document.getElementById('add-book-btn'),
     bookForm: document.forms['bookForm'],
@@ -8,12 +9,15 @@
     closeFormButton: document.getElementById('close-form-btn')
   };
 
-  function Book(title, author, year, pages, isRead=false) {
-    this.title = title;
-    this.author = author;
-    this.year = year;
-    this.pages = pages;
-    this.isRead = isRead;
+  class Book {
+    constructor(title, author, year, pages, isRead=false) {
+      this.title = title;
+      this.author = author;
+      this.year = year;
+      this.pages = pages;
+      this.isRead = isRead;
+    }
+    
   }
 
   // Dummy books
@@ -27,7 +31,7 @@
     for (let book of library) {
       let card = createBookCard(book);
       card.setAttribute('data-index', library.indexOf(book));
-      ui.libraryContainer.appendChild(card);
+      UI.libraryContainer.appendChild(card);
     }
   }
 
@@ -85,40 +89,40 @@
     return true
   }
 
-  function updateRequiredAttr(form) {
+  function updateReqUIredAttr(form) {
     for (const input of form.getElementsByTagName('input')) {
       if (input.id != 'read') {
-        (input.getAttribute('required')) ? input.removeAttribute('required') : input.setAttribute('required', 'true');
+        (input.getAttribute('reqUIred')) ? input.removeAttribute('reqUIred') : input.setAttribute('reqUIred', 'true');
       };
     }
   }
 
   function hideForm(form) {
     form.reset();
-    updateRequiredAttr(form);
+    updateReqUIredAttr(form);
     form.style.display = 'none';
     document.querySelector('.bottom-layer').style.filter = 'brightness(100%)';
   }
 
   // Event listener callbacks
   function displayBookForm(event) {
-    updateRequiredAttr(ui.bookForm);
+    updateReqUIredAttr(UI.bookForm);
 
-    ui.bookForm.style.display = 'grid';
+    UI.bookForm.style.display = 'grid';
     document.querySelector('.bottom-layer').style.filter = 'brightness(50%)';
   }
 
   function hideBookForm(event) {
-    hideForm(ui.bookForm);
+    hideForm(UI.bookForm);
   }
 
   function removeBookFromLibrary(event) {
     const [bookCard, index] = getBookCardReference(event.target);
     library.splice(index, 1);
-    ui.libraryContainer.removeChild(bookCard);
+    UI.libraryContainer.removeChild(bookCard);
 
     // Update data-index
-    const remainingCards = Array.from(ui.libraryContainer.querySelectorAll('.book-card'));
+    const remainingCards = Array.from(UI.libraryContainer.querySelectorAll('.book-card'));
     for (let i = 0; i < remainingCards.length; i++) {
       remainingCards[i].setAttribute('data-index', i)
     }
@@ -134,29 +138,29 @@
   }
 
   function addBookToLibrary(event) {
-    if (validateForm(ui.bookForm)) {
+    if (validateForm(UI.bookForm)) {
       const book = new Book(
-        title=ui.bookForm['title'].value,
-        author=ui.bookForm['author'].value,
-        year=Number(ui.bookForm['year'].value),
-        pages=Number(ui.bookForm['pages'].value),
-        read=ui.bookForm['read'].checked
+        title=UI.bookForm['title'].value,
+        author=UI.bookForm['author'].value,
+        year=Number(UI.bookForm['year'].value),
+        pages=Number(UI.bookForm['pages'].value),
+        read=UI.bookForm['read'].checked
       )
     
       library.push(book);
       const card = createBookCard(book);
       card.setAttribute('data-index', library.indexOf(book));
-      ui.libraryContainer.appendChild(card);
+      UI.libraryContainer.appendChild(card);
 
-      hideForm(ui.bookForm);
+      hideForm(UI.bookForm);
     } 
   }
 
   displayBooks();
 
   // Event listeners
-  ui.addBookButton.addEventListener('click', displayBookForm);
-  ui.submitButton.addEventListener('click', addBookToLibrary);
-  ui.closeFormButton.addEventListener('click', hideBookForm);
+  UI.addBookButton.addEventListener('click', displayBookForm);
+  UI.submitButton.addEventListener('click', addBookToLibrary);
+  UI.closeFormButton.addEventListener('click', hideBookForm);
 
 })();
