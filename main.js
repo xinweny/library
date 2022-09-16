@@ -1,6 +1,12 @@
 (function () {
   let library = [];
 
+  // Dummy books
+  library.push(
+    new Book("Ducks: And How To Make Them Pay", 'William Cook', 1894, 188, true),
+    new Book("How to Teach Quantum Physics to your Dog", 'Chad Orzel', 2010, 256, true),
+    new Book("Raccoons Are The Brightest People", 'Sterling North', 1966, 192, false));
+
   const UI = {
     libraryContainer: document.querySelector('.card-container'),
     addBookButton: document.getElementById('add-book-btn'),
@@ -19,12 +25,6 @@
     }
     
   }
-
-  // Dummy books
-  library.push(
-    new Book("Ducks: And How To Make Them Pay", 'William Cook', 1894, 188, true),
-    new Book("How to Teach Quantum Physics to your Dog", 'Chad Orzel', 2010, 256, true),
-    new Book("Raccoons Are The Brightest People", 'Sterling North', 1966, 192, false));
 
   // Helper functions
   function displayBooks() {
@@ -89,24 +89,24 @@
     return true
   }
 
-  function updateReqUIredAttr(form) {
+  function updateRequiredAttr(form) {
     for (const input of form.getElementsByTagName('input')) {
       if (input.id != 'read') {
-        (input.getAttribute('reqUIred')) ? input.removeAttribute('reqUIred') : input.setAttribute('reqUIred', 'true');
+        (input.getAttribute('required')) ? input.removeAttribute('required') : input.setAttribute('required', 'true');
       };
     }
   }
 
   function hideForm(form) {
     form.reset();
-    updateReqUIredAttr(form);
+    updateRequiredAttr(form);
     form.style.display = 'none';
     document.querySelector('.bottom-layer').style.filter = 'brightness(100%)';
   }
 
   // Event listener callbacks
   function displayBookForm(event) {
-    updateReqUIredAttr(UI.bookForm);
+    updateRequiredAttr(UI.bookForm);
 
     UI.bookForm.style.display = 'grid';
     document.querySelector('.bottom-layer').style.filter = 'brightness(50%)';
