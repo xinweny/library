@@ -5,6 +5,10 @@
   text-decoration: none;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 body {
   background-image: url('./assets/background.jpeg');
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
