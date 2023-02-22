@@ -6,6 +6,9 @@ class UI {
     this.submitButton = document.querySelector('button#submit-btn');
     this.closeFormButton = document.getElementById('close-form-btn');
     this.bottomLayer = document.querySelector('.bottom-layer');
+    this.signInButton = document.querySelector('.sign-in-btn');
+    this.signOutButton = document.querySelector('.sign-out-btn');
+    this.profileDisplay = document.querySelector('.profile-display');
   }
 
   createBookCard(book) {
@@ -144,6 +147,37 @@ class UI {
         (input.getAttribute('required')) ? input.removeAttribute('required') : input.setAttribute('required', 'true');
       };
     }
+  }
+
+  // Authentication related functions
+  showSignIn(imgUrl, userName) {
+    const displayName = document.createElement('p');
+    displayName.textContent = userName;
+
+    const displayPic = document.createElement('img');
+    displayPic.setAttribute('referrerpolicy', 'no-referrer');
+    displayPic.src = imgUrl;
+    
+    this.profileDisplay.appendChild(displayName);
+    this.profileDisplay.appendChild(displayPic);
+
+    this.signOutButton.removeAttribute('hidden');
+    this.signInButton.setAttribute('hidden', 'true');
+  }
+
+  showSignOut() {
+    this.profileDisplay.innerHTML = '';
+
+    this.signInButton.removeAttribute('hidden');
+    this.signOutButton.setAttribute('hidden', 'true');
+  }
+
+  bindSignInButton(handler) {
+    this.signInButton.addEventListener('click', handler);
+  }
+
+  bindSignOutButton(handler) {
+    this.signOutButton.addEventListener('click', handler);
   }
 }
 

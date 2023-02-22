@@ -1,8 +1,10 @@
 import Book from './Book';
-import UI from './UI';
+
+import { collection, getDocs } from 'firebase/firestore/lite';
 
 class Library {
-	constructor() {
+	constructor(db) {
+		// console.log(collection(db, 'books'));
 		this.books = [];
 		this.books.push(
 			new Book("Ducks: And How To Make Them Pay", 'William Cook', 1894, 188, true),

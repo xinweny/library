@@ -185,3 +185,9 @@ input:not(#read) {
   background-color: black;
   color: white;
 }
+
+.sign-in-btn, .sign-out-btn {
+  background-color: transparent;
+  color: white;
+  border: none;
+}
