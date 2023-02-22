@@ -6,6 +6,8 @@ import {
   signOut,
 } from 'firebase/auth';
 
+import placeholder from '../assets/placeholder-avatar.png';
+
 class UserAuthenticator {
 	constructor(ui, library) {
 		this.ui = ui;
@@ -32,7 +34,7 @@ class UserAuthenticator {
 	async authStateObserver(user) {
 		if (user) {
 			const userName = this.getCurrentUser().displayName;
-			const profilePicUrl = this.getCurrentUser().photoURL || '#';
+			const profilePicUrl = this.getCurrentUser().photoURL || placeholder;
 
 			this.ui.showSignIn(profilePicUrl, userName);
 
