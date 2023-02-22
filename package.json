@@ -38,5 +38,6 @@
   "dependencies": {
     "firebase": "^9.17.1",
     "uniqid": "^5.4.0"
-  }
+  },
+  "homepage": "https://xinweny.github.io/library"
 }
