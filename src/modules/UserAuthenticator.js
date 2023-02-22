@@ -7,8 +7,9 @@ import {
 } from 'firebase/auth';
 
 class UserAuthenticator {
-	constructor(ui) {
+	constructor(ui, library) {
 		this.ui = ui;
+		this.library = library;
 	}
 
 	initFirebaseAuth() {
@@ -28,15 +29,24 @@ class UserAuthenticator {
 		return !!getAuth().currentUser;
 	}
 
-	authStateObserver(user) {
+	async authStateObserver(user) {
 		if (user) {
-			const profilePicUrl = getAuth().currentUser.photoURL || '#';
-			const userName = getAuth().currentUser.displayName;
+			const userName = this.getCurrentUser().displayName;
+			const profilePicUrl = this.getCurrentUser().photoURL || '#';
 
 			this.ui.showSignIn(profilePicUrl, userName);
+
+			await this.library.init(user);
 		} else {
 			this.ui.showSignOut();
+			this.library.init();
 		}
+
+		this.ui.displayBooks(this.library);
+	}
+
+	getCurrentUser() {
+		return getAuth().currentUser;
 	}
 }
 

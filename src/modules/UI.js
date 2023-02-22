@@ -80,7 +80,7 @@ class UI {
   }
 
   bindSubmitButton(handler, library) {
-    this.submitButton.addEventListener('click', () => {
+    this.submitButton.addEventListener('click', async () => {
       if (this.validateForm(this.bookForm)) {
         const bookObj = {
           title: this.bookForm['title'].value,
@@ -90,7 +90,7 @@ class UI {
           isRead: this.bookForm['read'].checked,
         }
   
-        const book = handler(bookObj);
+        const book = await handler(bookObj);
   
         const card = this.createBookCard(book);
         this.libraryContainer.appendChild(card);
@@ -104,8 +104,8 @@ class UI {
   bindReadButton(handler, id, library) {
     const button = this.libraryContainer.querySelector(`.read-btn[data-id="${id}"]`);
 
-    button.addEventListener('click', (event) => {
-      handler(id);
+    button.addEventListener('click', async (event) => {
+      await handler(id);
       this.displayBooks(library);
     });
   }
@@ -113,8 +113,8 @@ class UI {
   bindDeleteButton(handler, id, library) {
     const button = this.libraryContainer.querySelector(`.delete-btn[data-id="${id}"]`);
 
-    button.addEventListener('click', () => {
-      handler(id);
+    button.addEventListener('click', async () => {
+      await handler(id);
       this.displayBooks(library);
     });
   }
